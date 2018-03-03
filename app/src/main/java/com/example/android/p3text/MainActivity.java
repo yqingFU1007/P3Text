@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     int score = 0;
     int question_counter = 1;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view){
+        EditText Name = (EditText) findViewById(R.id.name_field);
+        name = Name.getText().toString();
+        Name.setVisibility(View.INVISIBLE);
+
         ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
         imageView.setImageResource(R.drawable.shui_hu_zhuan);
 
@@ -42,11 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonOne(View view){
-        if (question_counter == 10){
-            end();
-        }
+
         if (question_counter == 9){
-            score += 10;
             questionTen();
         }
         if (question_counter == 8){
@@ -79,11 +83,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonTwo(View view){
-        if (question_counter == 10){
-            score += 10;
-            end();
-        }
         if (question_counter == 9){
+            score += 10;
             questionTen();
         }
         if (question_counter == 8){
@@ -116,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonThree(View view){
-        if (question_counter == 10){
-            end();
-        }
         if (question_counter == 9){
             questionTen();
         }
@@ -190,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
         buttonThree.setText("青海");
         TextView textView = (TextView)findViewById(R.id.title);
         textView.setText("《西游记》中的火焰山位于");
+        textView.setTextColor(Color.rgb(0,0,0));
         question_counter = 4;
     }
 
@@ -204,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         buttonThree.setText("赵飞燕");
         TextView textView = (TextView)findViewById(R.id.title);
         textView.setText("相传古代能作\"掌上舞\"的是");
+        textView.setTextColor(Color.rgb(255,255,255));
         question_counter = 5;
     }
 
@@ -251,20 +251,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void questionNine(){
         ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
-        imageView.setImageResource(R.drawable.hong_lou_meng);
-        Button buttonOne = (Button)findViewById(R.id.button_one);
-        buttonOne.setText("晴雯");
-        Button buttonTwo = (Button)findViewById(R.id.button_two);
-        buttonTwo.setText("袭人");
-        Button buttonThree = (Button)findViewById(R.id.button_three);
-        buttonThree.setText("黛玉");
-        TextView textView = (TextView)findViewById(R.id.title);
-        textView.setText("\"心比天高，身为下贱\"是《红楼梦》中对谁的判词？");
-        question_counter = 9;
-    }
-
-    private void questionTen(){
-        ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
         imageView.setImageResource(R.drawable.jing_ju);
         Button buttonOne = (Button)findViewById(R.id.button_one);
         buttonOne.setText("青衣");
@@ -275,22 +261,78 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView)findViewById(R.id.title);
         textView.setText("京剧中，饰演性格活泼、开朗的青年女性的应是");
         textView.setTextColor(Color.rgb(0,255,255));
-        question_counter = 10;
+        question_counter = 9;
     }
 
-    private void end(){
-        ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
-        imageView.setImageResource(R.drawable.shi_juan);
-        TextView textView = (TextView)findViewById(R.id.title);
-        textView.setText("测试结果");
-        textView.setTextColor(Color.rgb(255,0,0));
-        textView.setTextSize(40);
+    private void questionTen(){
         Button buttonOne = (Button)findViewById(R.id.button_one);
         buttonOne.setVisibility(View.INVISIBLE);
         Button buttonTwo = (Button)findViewById(R.id.button_two);
         buttonTwo.setVisibility(View.INVISIBLE);
         Button buttonThree = (Button)findViewById(R.id.button_three);
         buttonThree.setVisibility(View.INVISIBLE);
+        ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
+        imageView.setImageResource(R.drawable.hong_lou_meng);
+
+        CheckBox checkBoxOne = (CheckBox)findViewById(R.id.box_one);
+        checkBoxOne.setVisibility(View.VISIBLE);
+        CheckBox checkBoxTwo = (CheckBox)findViewById(R.id.box_two);
+        checkBoxTwo.setVisibility(View.VISIBLE);
+        CheckBox checkBoxThree = (CheckBox)findViewById(R.id.box_three);
+        checkBoxThree.setVisibility(View.VISIBLE);
+        CheckBox checkBoxFour = (CheckBox)findViewById(R.id.box_four);
+        checkBoxFour.setVisibility(View.VISIBLE);
+
+        Button submit = (Button)findViewById(R.id.submit);
+        submit.setVisibility(View.VISIBLE);
+        TextView textView = (TextView)findViewById(R.id.title);
+        textView.setText("下列哪些是形容林黛玉的");
+        textView.setTextColor(Color.rgb(255,255,255));
+
+    }
+
+    public void submit(View view){
+        CheckBox checkBoxOne = (CheckBox)findViewById(R.id.box_one);
+        boolean isCheckOne = checkBoxOne.isChecked();
+
+        CheckBox checkBoxTwo = (CheckBox)findViewById(R.id.box_two);
+        boolean isCheckTwo = checkBoxTwo.isChecked();
+
+        CheckBox checkBoxThree = (CheckBox)findViewById(R.id.box_three);
+        boolean isCheckThree = checkBoxThree.isChecked();
+
+        CheckBox checkBoxFour = (CheckBox)findViewById(R.id.box_four);
+        boolean isCheckFour = checkBoxFour.isChecked();
+
+        if (isCheckOne && (!isCheckTwo) && isCheckThree && (!isCheckFour)){
+            score += 10;
+        }
+        end();
+    }
+
+
+
+    private void end(){
+        ImageView imageView = (ImageView)findViewById(R.id.first_page_book);
+        imageView.setImageResource(R.drawable.shi_juan);
+        TextView textView = (TextView)findViewById(R.id.title);
+        textView.setText(name + "的测试结果");
+        textView.setTextColor(Color.rgb(255,0,0));
+        textView.setTextSize(40);
+        CheckBox checkBoxOne = (CheckBox)findViewById(R.id.box_one);
+        checkBoxOne.setVisibility(View.INVISIBLE);
+        boolean isCheckOne = checkBoxOne.isChecked();
+        CheckBox checkBoxTwo = (CheckBox)findViewById(R.id.box_two);
+        checkBoxTwo.setVisibility(View.INVISIBLE);
+        boolean isCheckTwo = checkBoxOne.isChecked();
+        CheckBox checkBoxThree = (CheckBox)findViewById(R.id.box_three);
+        checkBoxThree.setVisibility(View.INVISIBLE);
+        boolean isCheckThree = checkBoxOne.isChecked();
+        CheckBox checkBoxFour = (CheckBox)findViewById(R.id.box_four);
+        checkBoxFour.setVisibility(View.INVISIBLE);
+        boolean isCheckFour = checkBoxOne.isChecked();
+        Button submit = (Button)findViewById(R.id.submit);
+        submit.setVisibility(View.INVISIBLE);
         TextView scoreText = (TextView)findViewById(R.id.score);
         scoreText.setVisibility(View.VISIBLE);
         String result = "" + score;

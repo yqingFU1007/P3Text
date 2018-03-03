@@ -35,13 +35,27 @@
                 android:textColor="#FFFFFF"
                 android:fontFamily="@font/girl" />
 
+            <EditText
+                android:id="@+id/name_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:hint="NAME"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:gravity="center"
+                android:textColor="#00796B"
+                android:visibility="visible"
+                android:enabled="true"/>
+
             <Button
                 android:id="@+id/start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="start!"
                 android:layout_below="@id/title"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="120dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginRight="50dp"
                 android:background="#4DB6AC"
@@ -57,6 +71,72 @@
                 android:visibility="invisible"
                 android:onClick="buttonOne"/>
 
+            <CheckBox
+                android:id="@+id/box_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="闲静时似娇花照水，行动处如弱柳扶风"
+                android:fontFamily="@font/girl"
+                android:textSize="25sp"
+                android:textColor="#90A4AE"
+                android:visibility="invisible"/>
+
+            <CheckBox
+                android:id="@+id/box_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/box_one"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="面若中秋之月，色如春晓之花"
+                android:textColor="#90A4AE"
+                android:fontFamily="@font/girl"
+                android:textSize="25sp"
+                android:visibility="invisible"/>
+
+            <CheckBox
+                android:id="@+id/box_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/box_two"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="两弯似蹙非蹙笼烟眉，一双似喜非喜含露目"
+                android:fontFamily="@font/girl"
+                android:textSize="25sp"
+                android:textColor="#90A4AE"
+                android:visibility="invisible"/>
+
+            <CheckBox
+                android:id="@+id/box_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/box_three"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="虽怒时而似笑，即嗔视有情"
+                android:fontFamily="@font/girl"
+                android:textSize="25sp"
+                android:textColor="#90A4AE"
+                android:visibility="invisible"/>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/box_four"
+                android:text="submit"
+                android:onClick="submit"
+                android:visibility="invisible"/>
             <Button
                 android:id="@+id/button_two"
                 android:layout_width="match_parent"
@@ -90,8 +170,8 @@
                 android:fontFamily="@font/girl"
                 android:textSize="80sp"
                 android:layout_below="@id/title"
-                android:layout_marginTop="120dp"
-                android:layout_marginLeft="150dp"
+                android:layout_marginTop="110dp"
+                android:layout_marginLeft="160dp"
                 android:visibility="invisible"/>
         </RelativeLayout>
 
